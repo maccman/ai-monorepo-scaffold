@@ -1,4 +1,3 @@
-
 export type JSONValue =
   | null
   | string
@@ -10,7 +9,7 @@ export type JSONValue =
   | Array<JSONValue>
 
 // Example of how to define a custom column type
-// 
+//
 // export type ProjectStage = {
 //   name: string
 //   description: string
