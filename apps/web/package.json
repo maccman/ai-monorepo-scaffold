@@ -70,6 +70,7 @@
     "@astrojs/node": "^9.2.1",
     "@astrojs/react": "^4.2.7",
     "@astrojs/vercel": "^8.1.5",
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.8",
     "@trpc/server": "^11.1.2",
     "@types/lodash-es": "^4.17.12",
