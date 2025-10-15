@@ -1,0 +1,106 @@
+---
+alwaysApply: true
+description: Enforces proper monorepo structure for business logic placement
+---
+
+# Monorepo Structure - Critical Rules
+
+## NEVER PUT BUSINESS LOGIC IN apps/web/src/lib/
+
+**VIOLATION EXAMPLE (DO NOT DO THIS):**
+
+```typescript
+// ❌ WRONG: apps/web/src/lib/crawler.ts
+export async function crawlWebsite() {
+  // Database operations, AI calls, etc.
+}
+```
+
+**CORRECT APPROACH:**
+
+```typescript
+// ✅ CORRECT: packages/api/src/actions/crawling/worker.ts
+export async function crawlSingleWebsite() {
+  // Business logic belongs here
+}
+
+// ✅ CORRECT: apps/web/src/pages/api/crawl.ts (thin wrapper only)
+import { crawlSingleWebsite } from '@app/api'
+export const POST: APIRoute = async ({ request }) => {
+  const result = await crawlSingleWebsite(params)
+  return new Response(JSON.stringify(result))
+}
+```
+
+## Directory Rules
+
+### packages/api/src/ - Business Logic ONLY
+
+```
+packages/api/src/
+├── actions/               # ✅ All business logic here
+│   ├── crawling/         # ✅ Crawling operations
+│   ├── extraction/        # ✅ AI/data processing
+│   ├── browser/           # ✅ External service clients
+│   └── seeding/           # ✅ Database seeding
+├── routers/               # ✅ tRPC API routes
+├── schemas/               # ✅ Zod validation schemas
+└── index.ts               # ✅ Export everything for apps
+```
+
+### apps/web/src/ - Frontend + Thin API Wrappers ONLY
+
+```
+apps/web/src/
+├── components/            # ✅ React UI components only
+├── hooks/                 # ✅ Frontend React hooks only
+├── pages/api/             # ✅ Thin API wrappers only (no business logic)
+├── client/                # ✅ tRPC client setup only
+├── lib/utils.ts           # ✅ Frontend utilities only
+└── server/                # ✅ Astro server config only
+```
+
+## MANDATORY PATTERNS
+
+### 1. Business Logic → packages/api
+
+- Database operations
+- AI/ML processing
+- External API clients (Browserless, OpenAI, GCS)
+- Data transformation
+- Validation schemas
+- Complex algorithms
+
+### 2. API Routes → Thin Wrappers Only
+
+```typescript
+// ✅ CORRECT: Thin wrapper pattern
+export const POST: APIRoute = async ({ request }) => {
+  // 1. Auth validation only
+  // 2. Parse request with Zod
+  // 3. Call packages/api function
+  // 4. Return response
+}
+```
+
+### 3. Export Pattern
+
+```typescript
+// packages/api/src/index.ts
+export { businessFunction } from './actions/domain/function'
+
+// apps/web/src/pages/api/endpoint.ts
+import { businessFunction } from '@app/api'
+```
+
+## COST OF VIOLATIONS
+
+Putting business logic in `apps/web/src/lib/` requires:
+
+- ❌ Major refactoring across multiple files
+- ❌ Moving dependencies between packages
+- ❌ Updating dozens of imports
+- ❌ Risk of breaking existing functionality
+- ❌ Significant development time waste
+
+**ALWAYS ASK: "Does this belong in packages/api?" before creating any new business logic files.**

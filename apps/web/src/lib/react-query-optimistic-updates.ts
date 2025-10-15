@@ -335,8 +335,11 @@ export function useOptimisticItem<TItem>(options: {
   // Clear optimistic data when server data changes
   useEffect(() => {
     if (query.data && isOptimistic) {
-      setIsOptimistic(false)
-      setOptimisticData(null)
+      // Use setTimeout to avoid synchronous state updates in effect
+      setTimeout(() => {
+        setIsOptimistic(false)
+        setOptimisticData(null)
+      }, 0)
     }
   }, [query.data, isOptimistic])
 

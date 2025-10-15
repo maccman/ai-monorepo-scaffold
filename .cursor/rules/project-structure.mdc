@@ -1,0 +1,23 @@
+---
+alwaysApply: true
+---
+
+# Project Structure
+
+This document outlines the structure of the monorepo, detailing the purpose of each package and application directory.
+
+## `apps/`
+
+This directory contains the applications of the monorepo.
+
+- **`apps/web`**: This is the main frontend application, built with [Astro](https://astro.build/) and [React](https://react.dev/). It includes all UI components, pages, layouts, and client-side logic.
+
+## `packages/`
+
+This directory contains shared packages used by the applications.
+
+- **`packages/api`**: This package holds the [tRPC](https://trpc.io/) API. It's responsible for defining API procedures, business logic, and type-safe communication between the client and server.
+
+- **`packages/db`**: This package manages all database-related concerns. It uses [Kysely](https://kysely.dev/) for type-safe query building and contains the database schema, migrations, and seeding scripts.
+
+- **`packages/utils`**: A collection of shared utility functions and types that are used across different packages and applications within the monorepo.

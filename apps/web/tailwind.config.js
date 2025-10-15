@@ -1,5 +1,4 @@
-/** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   darkMode: ['class'],
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
@@ -75,5 +74,5 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('tw-animate-css')], // Note: tailwindcss-animate has been deprecated
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { GalleryVerticalEnd } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { signIn } from '@/client/auth-client'
 import { Button } from '@/components/ui/button'
@@ -16,16 +16,16 @@ import { cn } from '@/lib/utils'
 
 export function SignIn() {
   const [loading, setLoading] = useState(false)
-  const [callbackURL, setCallbackURL] = useState('/')
-
-  useEffect(() => {
+  const [callbackURL] = useState(() => {
     // Extract the 'back' or 'redirect' parameter from the URL
+    // Guard against SSR where window is not available
+    if (typeof window === 'undefined') {
+      return '/'
+    }
     const urlParams = new URLSearchParams(window.location.search)
     const redirectParam = urlParams.get('redirect')
-
-    // Use the redirect or back parameter if it exists, otherwise default to '/'
-    setCallbackURL(redirectParam || '/')
-  }, [])
+    return redirectParam || '/'
+  })
 
   const handleGoogleSignIn = async () => {
     await signIn.social(

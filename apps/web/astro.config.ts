@@ -58,11 +58,41 @@ const config = defineConfig({
   adapter: process.env.VERCEL
     ? vercel({
         maxDuration: 300,
+        imageService: true,
+        // Do not enable ISR for now - causes vercel to fail requests
+        // isr: {
+        //   expiration: 60 * 60, // 1 hour
+        // },
       })
     : node({ mode: 'standalone' }),
 
   integrations: [react()],
   vite: {
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom'],
+            'query-vendor': ['@tanstack/react-query', '@trpc/client'],
+            'ui-vendor': [
+              '@radix-ui/react-dialog',
+              '@radix-ui/react-dropdown-menu',
+              '@radix-ui/react-select',
+            ],
+            'utils-vendor': ['lodash-es', 'date-fns', 'clsx'],
+          },
+        },
+      },
+      // Reduce memory usage during build
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
+    },
     plugins: [tailwindcss()],
     resolve: {
       alias: {

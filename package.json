@@ -9,24 +9,26 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "preview": "turbo run preview",
-    "lint": "eslint . --max-warnings=0",
+    "lint": "turbo run lint",
+    "lint:profile": "TIMING=1 turbo run lint",
+    "lint:ci": "turbo run lint:ci --cache-dir=.turbo",
     "typecheck": "tsc -b",
     "test": "turbo run test",
     "fix": "pnpm run fix:tsconfig && pnpm run fix:eslint && pnpm run fix:prettier",
     "fix:prettier": "prettier --write .",
-    "fix:eslint": "eslint . --fix",
+    "fix:eslint": "turbo run lint:fix",
     "fix:tsconfig": "monorepo-typescript-references fix"
   },
   "devDependencies": {
-    "@ocavue/eslint-config": "^3.0.0",
-    "@ocavue/tsconfig": "^0.3.7",
-    "eslint": "^9.26.0",
+    "@ocavue/eslint-config": "^3.6.0",
+    "@ocavue/tsconfig": "^0.5.0",
+    "eslint": "^9.37.0",
     "monorepo-typescript-references": "^1.1.0",
-    "prettier": "^3.5.3",
+    "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
-    "turbo": "^2.5.2",
-    "typescript": "^5.8.3",
-    "vitest": "^3.1.3"
+    "turbo": "^2.5.8",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
   },
   "pnpm": {
     "overrides": {}

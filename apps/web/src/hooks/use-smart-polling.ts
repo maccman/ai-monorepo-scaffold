@@ -22,8 +22,12 @@ export const SmartPollingContext =
  * Hook to track user activity and determine polling state
  */
 function useActivityState() {
-  const [isVisible, setIsVisible] = useState(true)
-  const [isFocused, setIsFocused] = useState(true)
+  const [isVisible, setIsVisible] = useState(() =>
+    typeof window !== 'undefined' ? !document.hidden : true,
+  )
+  const [isFocused, setIsFocused] = useState(() =>
+    typeof window !== 'undefined' ? document.hasFocus() : true,
+  )
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -41,10 +45,6 @@ function useActivityState() {
     const handleBlur = () => {
       setIsFocused(false)
     }
-
-    // Set initial state
-    setIsVisible(!document.hidden)
-    setIsFocused(document.hasFocus())
 
     document.addEventListener('visibilitychange', handleVisibilityChange)
     window.addEventListener('focus', handleFocus)
