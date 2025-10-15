@@ -38,6 +38,11 @@
     "lint:ci": {
       "outputs": [],
       "cache": true
+    },
+    "typecheck": {
+      "outputs": [],
+      "dependsOn": ["^build"],
+      "cache": true
     }
   }
 }

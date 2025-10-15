@@ -17,6 +17,7 @@
     "db:migrate": "pnpm db:migrate:up && pnpm db:codegen && pnpm db:schema:dump",
     "db:seed": "psql \"$DATABASE_URL\" -f seed.sql",
     "db:setup": "pnpm db:migrate && pnpm db:seed",
+    "typecheck": "tsc -b",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint . --max-warnings=0 --cache --concurrency=2",
