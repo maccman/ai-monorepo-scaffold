@@ -1,6 +1,6 @@
 import { navigate } from 'astro:transitions/client'
 import { Home } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -60,11 +60,7 @@ function NavItem({ icon, label, href, active = false, onClick }: NavItemProps) {
 }
 
 export function AppSidebar() {
-  const [currentPath, setCurrentPath] = useState('')
-
-  useEffect(() => {
-    setCurrentPath(window.location.pathname)
-  }, [])
+  const [currentPath] = useState(() => window.location.pathname)
 
   return (
     <div className="w-[56px] h-full bg-background border-r flex flex-col items-center py-4 gap-6 px-2">
