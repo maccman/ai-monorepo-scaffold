@@ -9,12 +9,14 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "preview": "turbo run preview",
-    "lint": "eslint . --max-warnings=0",
+    "lint": "turbo run lint",
+    "lint:profile": "TIMING=1 turbo run lint",
+    "lint:ci": "turbo run lint:ci --cache-dir=.turbo",
     "typecheck": "tsc -b",
     "test": "turbo run test",
     "fix": "pnpm run fix:tsconfig && pnpm run fix:eslint && pnpm run fix:prettier",
     "fix:prettier": "prettier --write .",
-    "fix:eslint": "eslint . --fix",
+    "fix:eslint": "turbo run lint:fix",
     "fix:tsconfig": "monorepo-typescript-references fix"
   },
   "devDependencies": {
