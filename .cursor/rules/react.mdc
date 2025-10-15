@@ -3,11 +3,13 @@ description:
 globs: **/*.tsx
 alwaysApply: false
 ---
+
 React Naming Conventions:
 
 - Use kebab-case for files and directories.
 
 Components:
+
 - DO not use 'use client' or 'use server' statements
 - Favor named exports for components
 - Ensure components are modular, reusable, and maintain a clear separation of concerns.
@@ -16,6 +18,7 @@ Components:
 - Rather than have a large function, like a TRPC mutation handler, inside the component, refactor and split it out into a generic helper or hooks lib.
 - DO NOT `import * as React from 'react'`, import each React function specifically
 - `zod` and `react-hook-form` packages are installed - use them.
+- Always use `cn` from `@/lib/utils` for class name merging.
 
 UI and Styling:
 

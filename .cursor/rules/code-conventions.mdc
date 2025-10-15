@@ -3,6 +3,7 @@ description:
 globs: **/*.ts,**/*.tsx
 alwaysApply: false
 ---
+
 ## Technologies used
 
 - **React & Astro** - Build interactive UIs with React components in Astro
@@ -23,10 +24,10 @@ When writing or modifying code in this project, please adhere to the following c
 1.  **TypeScript Best Practices**: Follow standard, idiomatic TypeScript coding practices for structure, naming, and types, unless otherwise overridden.
 2.  **Minimal Comments**: Avoid adding comments unless they explain complex logic or non-obvious decisions. Well-written, self-explanatory code is preferred. Do not add comments that merely restate what the code does.
 3.  **Tests as Documentation**: Rely on comprehensive tests (which will be added later if not present) to document the behavior and usage of the code, rather than extensive comments within the code itself.
-4. **File naming conventions**: Use kebab-case when naming directories, TypeScript, and other files. 
-5. **Type checking**: after major modifications run `pnpm typecheck` and fix any errors.
-6. **UX/UI** We are using Tailwind CSS, React, shadcn/ui components and Lucide React icons. Generate responsive designs. Provide default props for React Components. Check to see if a shadcn component exists under `apps/webs/src/components/ui` before installing it.
-7. **Models/db/tables** When pulling in a database type, use:
+4.  **File naming conventions**: Use kebab-case when naming directories, TypeScript, and other files.
+5.  **Type checking**: after major modifications run `pnpm typecheck` and fix any errors.
+6.  **UX/UI** We are using Tailwind CSS, React, shadcn/ui components and Lucide React icons. Generate responsive designs. Provide default props for React Components. Check to see if a shadcn component exists under `apps/web/src/components/ui` before installing it. Always use `cn` from `@/lib/utils` for class name merging.
+7.  **Models/db/tables** When pulling in a database type, use:
 
 ```typescript
 import type { Conversation } from '@app/db/types'
@@ -45,8 +46,9 @@ interface ConversationItemProps {
    - **Validators** (`validators.ts`) - Functions that validate input data
    - **Checkers** (`checkers.ts`) - Functions that check permissions and authorization
    - **Domain-specific logic** - Additional files for complex business logic (e.g., `process-inbound.ts`)
-   
+
    Example structure:
+
    ```
    packages/api/src/actions/emails/
    ├── getters.ts     # getProjectInboundEmailAddress()
@@ -60,25 +62,25 @@ interface ConversationItemProps {
 
     ```typescript
     // packages/api/src/index.ts
-    
+
     // Export functions
     export { processInboundEmail } from './actions/emails/process-inbound'
     export { getProjectInboundEmailAddress } from './actions/emails/getters'
-    
+
     // Export types
     export type { MailgunWebhookSchema } from './actions/emails/process-inbound'
     ```
 
     Then in `apps/web`, import from `@app/api`:
+
     ```typescript
     // ✅ Correct - imports from the package export
     import { processInboundEmail, MailgunWebhookSchema } from '@app/api'
-    
+
     // ❌ Wrong - direct file imports will fail
     import { processInboundEmail } from '@app/api/src/actions/emails/process-inbound'
     ```
 
     **Important**: If you forget to export in `index.ts`, the import will fail with linting/type errors.
-
 
 Only make the exact changes I request—do not modify, remove, or alter any other code, styling, or page elements unless explicitly instructed. If my request conflicts with existing code, styling, or functionality, or if you anticipate any issues, pause execution and notify me for confirmation before proceeding. Always follow this rule for every modification. If in doubt, ask before making any change.
