@@ -18,6 +18,10 @@ export function SignIn() {
   const [loading, setLoading] = useState(false)
   const [callbackURL] = useState(() => {
     // Extract the 'back' or 'redirect' parameter from the URL
+    // Guard against SSR where window is not available
+    if (typeof window === 'undefined') {
+      return '/'
+    }
     const urlParams = new URLSearchParams(window.location.search)
     const redirectParam = urlParams.get('redirect')
     return redirectParam || '/'
