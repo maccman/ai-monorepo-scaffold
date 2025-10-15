@@ -202,7 +202,7 @@ importers:
         specifier: ^0.5.19
         version: 0.5.19(tailwindcss@4.1.14)
       '@tailwindcss/vite':
-        specifier: ^4.1.8
+        specifier: ^4.1.13
         version: 4.1.14(vite@6.4.0(@types/node@24.7.2)(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.44.0)(yaml@2.7.1))
       '@trpc/server':
         specifier: ^11.1.2
@@ -235,7 +235,7 @@ importers:
         specifier: ^26.1.0
         version: 26.1.0(bufferutil@4.0.9)
       tailwindcss:
-        specifier: ^4.1.8
+        specifier: ^4.1.13
         version: 4.1.14
       tailwindcss-animate:
         specifier: ^1.0.7
@@ -244,7 +244,7 @@ importers:
         specifier: ^5.44.0
         version: 5.44.0
       tw-animate-css:
-        specifier: ^1.2.8
+        specifier: ^1.4.0
         version: 1.4.0
       typescript:
         specifier: ^5.8.3
