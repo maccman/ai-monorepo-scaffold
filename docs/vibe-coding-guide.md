@@ -73,21 +73,6 @@ Generates comprehensive documentation for complex features or architectural deci
 - Quick feedback loops
 - Cost-effective
 
-### Selection Strategy
-
-**Complex projects:**
-
-1. Start with Claude Sonnet 4.5 for planning
-2. Use `review-plan` to break down work
-3. Switch to Cheetah for standard components
-4. Return to Claude Sonnet 4.5 for integration
-
-**Quick tasks:**
-
-1. Use Cheetah for immediate implementation
-2. Use `reflect` to validate
-3. Switch to Claude Sonnet 4.5 if complexity emerges
-
 ## Essential Setup
 
 ### 1. Great Scaffold
