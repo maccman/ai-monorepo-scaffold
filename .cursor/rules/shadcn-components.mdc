@@ -1,8 +1,9 @@
 ---
 description: How to install shadcn React components
-globs: 
+globs:
 alwaysApply: false
 ---
+
 The following official shadcn-ui components are available. Please check to see if they are installed under `./apps/web/components/ui` before installing them with `pnpm dlx shadcn@latest add <component-id>`.
 
 Notice that The 'shadcn-ui' package is deprecated. Please use the 'shadcn' package instead. For example:
@@ -15,54 +16,60 @@ YOU MUST use `pnpm dlx shadcn@latest` when installing shadcn packages.
 
 Docs for each components are available at `https://ui.shadcn.com/docs/components/<component-id>`. Fetch and read the docs before using the component so that your knowledge is up-to-date.
 
-#	Component ID (slug)	Human-friendly name	What it's for (1-sentence use-case)
-1	accordion	Accordion	Stack of headings that expand/collapse to reveal hidden content.
-2	alert	Alert	Static call-out box for status or info messages.
-3	alert-dialog	Alert Dialog	Modal that interrupts the flow to confirm or warn about critical actions.
-4	aspect-ratio	Aspect Ratio	Wrapper that locks children to a fixed width-to-height ratio (great for responsive media).
-5	avatar	Avatar	Small user/asset image or initials placeholder.
-6	badge	Badge	Tiny label for counts or status (e.g. “New”, “3”).
-7	breadcrumb	Breadcrumb	Navigation trail that shows “where you are” in the app hierarchy.
-8	button	Button	Click/tap element that triggers an action.
-9	calendar	Calendar	Stand-alone calendar view, used by Date Picker or on its own.
-10	card	Card	Content container with optional header/body/footer.
-11	carousel	Carousel	Horizontal slider that cycles through a set of items or images.
-12	chart	Chart	Light wrapper for quick bar/line/pie visualizations.
-13	checkbox	Checkbox	Square control for on/off selection of independent items.
-14	collapsible	Collapsible	Utility that hides/reveals content with smooth height animation.
-15	combobox	Combobox	Autocomplete text input that filters a long list and lets users pick an item.
-16	command	Command Palette	VS Code-style keyboard overlay for fuzzy-searching actions.
-17	context-menu	Context Menu	Right-click (long-press) menu with context-specific commands.
-18	data-table	Data Table	Table with helpers for sorting, filtering and pagination.
-19	date-picker	Date Picker	Input field that pops a calendar for choosing dates or ranges.
-20	dialog	Dialog	Generic modal overlay for arbitrary interactive content.
-21	drawer	Drawer	Slide-in panel (often from edge/bottom) for secondary workflows.
-22	dropdown-menu	Dropdown Menu	Triggered list of options/actions that auto-dismisses on selection.
-23	form	Form	Helpers and styles for accessible, validated forms.
-24	hover-card	Hover Card	Lightweight popover that appears on hover/focus to show extra info.
-25	input	Input	Standard single-line text field.
-26	input-otp	Input OTP	Grouped inputs optimised for entering one-time pass-codes.
-27	label	Label	Accessible label element for any form control.
-28	menubar	Menubar	Horizontal desktop-app-style menu with dropdown sub-menus.
-29	navigation-menu	Navigation Menu	Multi-level nav bar with active indicators and hover previews.
-30	pagination	Pagination	Next/previous + numbered page controls for paginated data sets.
-31	popover	Popover	Non-modal floating panel anchored to a trigger (e.g. emoji picker).
-32	progress	Progress	Linear bar that shows completion percentage.
-33	radio-group	Radio Group	Set of mutually-exclusive selection buttons.
-34	resizable	Resizable	Wrapper that lets users drag to resize split panes.
-35	scroll-area	Scroll Area	Augments native scrolling with custom styling and shadows.
-36	select	Select	Styled single-select dropdown (native <select> replacement).
-37	separator	Separator	Horizontal or vertical rule dividing content.
-38	sheet	Sheet	Mobile-friendly slide-up bottom sheet (from tiny to full-screen).
-39	sidebar	Sidebar	Vertical navigation rail that can collapse/expand.
-40	skeleton	Skeleton	Grey placeholder shapes shown while real content loads.
-41	slider	Slider	Draggable handle on a track for numeric values or ranges.
-42	sonner	Sonner	Opinionated toast component (thin wrapper around the Sonner library).
-43	switch	Switch	Toggle switch for true/false settings.
-44	table	Table	Basic static table markup & styling.
-45	tabs	Tabs	Tab strip that swaps between associated panels.
-46	textarea	Textarea	Multi-line text input.
-47	toast	Toast	Ephemeral message that pops at screen edge and auto-dismisses.
-48	toggle	Toggle	Pressable button that stays pressed/un-pressed to indicate state.
-49	toggle-group	Toggle Group	Collection of toggles acting as single- or multi-select controls.
-50	tooltip	Tooltip	Small hover/focus label supplying helper text.
+- `accordion` - Accordion: Stack of headings that expand/collapse to reveal hidden content.
+- `alert` - Alert: Static call-out box for status or info messages.
+- `alert-dialog` - Alert Dialog: Modal that interrupts the flow to confirm or warn about critical actions.
+- `aspect-ratio` - Aspect Ratio: Wrapper that locks children to a fixed width-to-height ratio (great for responsive media).
+- `avatar` - Avatar: Small user/asset image or initials placeholder.
+- `badge` - Badge: Tiny label for counts or status (e.g. "New", "3").
+- `breadcrumb` - Breadcrumb: Navigation trail that shows "where you are" in the app hierarchy.
+- `button` - Button: Click/tap element that triggers an action.
+- `calendar` - Calendar: Stand-alone calendar view, used by Date Picker or on its own.
+- `card` - Card: Content container with optional header/body/footer.
+- `carousel` - Carousel: Horizontal slider that cycles through a set of items or images.
+- `chart` - Chart: Light wrapper for quick bar/line/pie visualizations.
+- `checkbox` - Checkbox: Square control for on/off selection of independent items.
+- `collapsible` - Collapsible: Utility that hides/reveals content with smooth height animation.
+- `combobox` - Combobox: Autocomplete text input that filters a long list and lets users pick an item.
+- `command` - Command Palette: VS Code-style keyboard overlay for fuzzy-searching actions.
+- `context-menu` - Context Menu: Right-click (long-press) menu with context-specific commands.
+- `data-table` - Data Table: Table with helpers for sorting, filtering and pagination.
+- `date-picker` - Date Picker: Input field that pops a calendar for choosing dates or ranges.
+- `dialog` - Dialog: Generic modal overlay for arbitrary interactive content.
+- `drawer` - Drawer: Slide-in panel (often from edge/bottom) for secondary workflows.
+- `dropdown-menu` - Dropdown Menu: Triggered list of options/actions that auto-dismisses on selection.
+- `form` - Form: Helpers and styles for accessible, validated forms.
+- `hover-card` - Hover Card: Lightweight popover that appears on hover/focus to show extra info.
+- `input` - Input: Standard single-line text field.
+- `input-otp` - Input OTP: Grouped inputs optimised for entering one-time pass-codes.
+- `label` - Label: Accessible label element for any form control.
+- `menubar` - Menubar: Horizontal desktop-app-style menu with dropdown sub-menus.
+- `navigation-menu` - Navigation Menu: Multi-level nav bar with active indicators and hover previews.
+- `pagination` - Pagination: Next/previous + numbered page controls for paginated data sets.
+- `popover` - Popover: Non-modal floating panel anchored to a trigger (e.g. emoji picker).
+- `progress` - Progress: Linear bar that shows completion percentage.
+- `radio-group` - Radio Group: Set of mutually-exclusive selection buttons.
+- `resizable` - Resizable: Wrapper that lets users drag to resize split panes.
+- `scroll-area` - Scroll Area: Augments native scrolling with custom styling and shadows.
+- `select` - Select: Styled single-select dropdown (native <select> replacement).
+- `separator` - Separator: Horizontal or vertical rule dividing content.
+- `sheet` - Sheet: Mobile-friendly slide-up bottom sheet (from tiny to full-screen).
+- `sidebar` - Sidebar: Vertical navigation rail that can collapse/expand.
+- `skeleton` - Skeleton: Grey placeholder shapes shown while real content loads.
+- `slider` - Slider: Draggable handle on a track for numeric values or ranges.
+- `sonner` - Sonner: Opinionated toast component (thin wrapper around the Sonner library).
+- `switch` - Switch: Toggle switch for true/false settings.
+- `table` - Table: Basic static table markup & styling.
+- `tabs` - Tabs: Tab strip that swaps between associated panels.
+- `textarea` - Textarea: Multi-line text input.
+- `toast` - Toast: Ephemeral message that pops at screen edge and auto-dismisses.
+- `toggle` - Toggle: Pressable button that stays pressed/un-pressed to indicate state.
+- `toggle-group` - Toggle Group: Collection of toggles acting as single- or multi-select controls.
+- `tooltip` - Tooltip: Small hover/focus label supplying helper text.
+- `spinner` - Spinner: An indicator to show a loading state.
+- `kbd` - Kbd: Display a keyboard key or group of keys.
+- `button-group` - Button Group: A group of buttons for actions and split buttons.
+- `input-group` - Input Group: Input with icons, buttons, labels and more.
+- `field` - Field: One component. All your forms.
+- `item` - Item: Display lists of items, cards, and more.
+- `empty` - Empty: Use this one for empty states.
