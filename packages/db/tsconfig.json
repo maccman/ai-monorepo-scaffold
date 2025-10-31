@@ -2,5 +2,10 @@
   "extends": "@ocavue/tsconfig/dom/app.json",
   "compilerOptions": {
     "types": ["vitest/globals", "node"]
-  }
+  },
+  "references": [
+    {
+      "path": "../utils/tsconfig.json"
+    }
+  ]
 }

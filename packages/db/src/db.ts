@@ -1,21 +1,39 @@
+import { Pool as NeonPool, neonConfig } from '@neondatabase/serverless'
 import { CamelCasePlugin, Kysely, PostgresDialect } from 'kysely'
-import { NeonDialect } from 'kysely-neon'
 import { Pool } from 'pg'
 import ws from 'ws'
 
 import type { DB } from './types'
 
-function setupNeonDb(connectionString: string): Kysely<DB> {
-  console.log('[db] setting up neon db')
+type DatabasePool = NeonPool | Pool
 
-  return new Kysely<DB>({
-    dialect: new NeonDialect({
-      connectionString,
-      webSocketConstructor: ws,
-    }),
-    log: ['error'],
-    plugins: [new CamelCasePlugin()],
+function attachPoolErrorHandler(pool: DatabasePool, poolType: string): void {
+  pool.on('error', (err: Error) => {
+    console.error(`Unexpected error on idle ${poolType} client`, err)
   })
+}
+
+function createKyselyInstance(pool: DatabasePool): Kysely<DB> {
+  return new Kysely<DB>({
+    dialect: new PostgresDialect({
+      pool,
+    }),
+    // To debug queries, set to ['query', 'error']
+    log: ['error'],
+    // Maintain nested object keys to avoid converting JSONB keys from snake_case to camelCase.
+    plugins: [new CamelCasePlugin({ maintainNestedObjectKeys: true })],
+  })
+}
+
+function setupNeonDb(connectionString: string): Kysely<DB> {
+  console.log('[db] setting up neon db with WebSocket support')
+
+  neonConfig.webSocketConstructor = ws
+
+  const pool = new NeonPool({ connectionString })
+  attachPoolErrorHandler(pool, 'Neon')
+
+  return createKyselyInstance(pool)
 }
 
 function setupPostgresDb(connectionString: string): Kysely<DB> {
@@ -24,19 +42,9 @@ function setupPostgresDb(connectionString: string): Kysely<DB> {
   const pool = new Pool({
     connectionString,
   })
+  attachPoolErrorHandler(pool, 'Postgres')
 
-  // Prevent the server crashing when the pool has an error.
-  pool.on('error', (err) => {
-    console.error('Unexpected error on idle client', err)
-  })
-
-  return new Kysely<DB>({
-    dialect: new PostgresDialect({
-      pool,
-    }),
-    log: ['error'],
-    plugins: [new CamelCasePlugin()],
-  })
+  return createKyselyInstance(pool)
 }
 
 export function setupDb(connectionString: string): Kysely<DB> {
