@@ -20,10 +20,13 @@ Run from the root directory:
 ### Create a new migration
 
 1. Run `db:migrate:create <myname>`
-2. Edit the file it creates
+2. Edit the file it creates, always add an Up and Down migration.
 3. Run `db:migrate`
 
-Do not generate types.gen.ts files yourself - they'll be auto generated.
+Note:
+
+- Do not generate types.gen.ts files yourself - they'll be auto generated.
+- Never alter an `OWNER` in a migration.
 
 ### Using Kysely Type Helpers
 
@@ -123,3 +126,11 @@ ALTER TABLE projects ADD COLUMN tools_config JSONB;
 The types will be automatically generated and available through `@app/db/types` after running the migration and type generation.
 
 **Important**: Always define explicit TypeScript interfaces for JSONB columns rather than using generic types like `any` or `unknown`. This ensures type safety throughout the application.
+
+# Using psql
+
+You can always query the local database.
+
+```bash
+psql postgres://localhost:5432/monorepo-scaffold -c "SELECT * FROM users LIMIT 5"
+```
