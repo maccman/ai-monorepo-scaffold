@@ -93,7 +93,7 @@ const config = defineConfig({
         },
       },
     },
-    plugins: [tailwindcss() as any],
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve('./src'),
